@@ -28,12 +28,39 @@
                     <a href="#testimonios">Opiniones</a>
                     <a href="#contacto">Escríbenos</a>
                 </div>
-                <div class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
+                <div class="mobile-menu-btn" id="menuToggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
                 </div>
             </nav>
         </div>
     </header>
+
+    <!-- Full Screen Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenu">
+        <div class="mobile-menu-close" id="menuClose">&times;</div>
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-logo">
+                <img src="assets/logo.jpg" alt="Bella Decoración Logo">
+            </div>
+            <nav class="mobile-nav-links">
+                <a href="#inicio" onclick="closeMenu()">Inicio</a>
+                <a href="#servicios" onclick="closeMenu()">Servicios</a>
+                <a href="#galeria" onclick="closeMenu()">Galería</a>
+                <a href="#testimonios" onclick="closeMenu()">Opiniones</a>
+                <a href="#contacto" onclick="closeMenu()">Contacto</a>
+            </nav>
+            <div class="mobile-menu-footer">
+                <div class="social-links-mobile">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/###########"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <p class="script-font gold-text">Exclusividad que Flota</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="inicio">
@@ -193,25 +220,52 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contacto">
+        <div class="contact-bg-shape"></div>
         <div class="container">
             <div class="contact-container">
                 <div class="contact-info">
+                    <span class="script-font gold-badge">Servicio Premium</span>
                     <h3>Inicia tu Proyecto</h3>
-                    <p>Permítenos diseñar una propuesta exclusiva para tu próximo gran momento.</p>
+                    <p>Permítenos diseñar una propuesta exclusiva para tu próximo gran momento. Cada detalle es una
+                        firma de elegancia.</p>
+
+                    <div class="contact-details-list">
+                        <div class="contact-detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Diseños Exclusivos • Atención Nacional</span>
+                        </div>
+                        <div class="contact-detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Respuesta en menos de 24h</span>
+                        </div>
+                    </div>
+
                     <div class="whatsapp-container">
                         <a href="https://wa.me/###########" class="cta-btn whatsapp-btn" title="Contact Us on WhatsApp">
                             <i class="fab fa-whatsapp"></i> Contacto Directo
                         </a>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <input type="text" placeholder="Nombre completo" required>
-                    <input type="email" placeholder="Correo electrónico corporativo" required>
-                    <textarea placeholder="Háblanos de tu visión para el evento..." rows="5" required></textarea>
-                    <button type="submit" class="submit-btn">Consultar Disponibilidad</button>
-                </form>
+                <div class="contact-form-side">
+                    <form class="contact-form">
+                        <div class="input-group">
+                            <input type="text" id="name" required placeholder=" ">
+                            <label for="name">Nombre completo</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="email" required placeholder=" ">
+                            <label for="email">Correo electrónico</label>
+                        </div>
+                        <div class="input-group">
+                            <textarea id="vision" rows="4" required placeholder=" "></textarea>
+                            <label for="vision">Háblanos de tu visión...</label>
+                        </div>
+                        <button type="submit" class="submit-btn gold-shimmer-btn">
+                            Consultar Disponibilidad
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -378,20 +432,33 @@
             }
         }
 
-        // Simple Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
+        // Spectacular 24K Mobile Menu Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.width = '100%';
-            navLinks.style.background = 'var(--glass-dark)';
-            navLinks.style.padding = '20px';
-        });
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            menuToggle.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Stagger animation for links
+            mobileLinks.forEach((link, index) => {
+                link.style.transitionDelay = `${0.2 + (index * 0.1)}s`;
+            });
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            mobileLinks.forEach(link => {
+                link.style.transitionDelay = '0s';
+            });
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        menuClose.addEventListener('click', closeMenu);
 
         // Testimonial Carousel Logic
         const track = document.getElementById('testimonialTrack');

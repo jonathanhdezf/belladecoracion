@@ -188,9 +188,29 @@ nav {
 
 .mobile-menu-btn {
     display: none;
+    flex-direction: column;
+    gap: 6px;
     cursor: pointer;
-    color: var(--gold-main);
-    font-size: 1.5rem;
+    z-index: 2001;
+}
+
+.mobile-menu-btn .bar {
+    width: 30px;
+    height: 2px;
+    background: var(--gold-main);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.mobile-menu-btn.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-btn.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* --- Hero Section --- */
@@ -522,7 +542,7 @@ nav {
     margin-bottom: 30px;
     line-height: 1.8;
     text-wrap: balance;
-    /* Modern CSS for perfectly balanced lines */
+    /* Modern balance effect for supported browsers */
     max-width: 90%;
 }
 
@@ -614,71 +634,135 @@ nav {
 }
 
 /* --- Contact Section --- */
+/* --- Contact Section Premium --- */
+.contact {
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.contact-bg-shape {
+    position: absolute;
+    top: 20%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.08), transparent 70%);
+    filter: blur(80px);
+    z-index: 0;
+}
+
 .contact-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    background: var(--secondary-black);
-    padding: 70px;
-    border-radius: 20px;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    background: rgba(26, 26, 26, 0.6);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    padding: 80px;
+    border-radius: 30px;
     border: 1px solid rgba(212, 175, 55, 0.1);
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.gold-badge {
+    color: var(--gold-main);
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
 }
 
 .contact-info h3 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: var(--gold-main);
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+    line-height: 1.1;
 }
 
-.whatsapp-container {
-    margin-top: 30px;
+.contact-info p {
+    color: #bbb;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
 }
 
-.whatsapp-btn {
-    background: #25D366 !important;
-    color: white !important;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3) !important;
+.contact-details-list {
+    margin-bottom: 40px;
 }
 
-.contact-form {
+.contact-detail-item {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    color: #eee;
 }
 
-.contact-form input,
-.contact-form textarea {
-    padding: 18px;
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    border-radius: 5px;
-    font-family: inherit;
-    background: #000;
-    color: white;
-    transition: border-color 0.3s;
+.contact-detail-item i {
+    color: var(--gold-main);
+    font-size: 1.2rem;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--gold-main);
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
 }
 
-.submit-btn {
-    background: var(--gold-main);
-    color: black;
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 15px 0;
+    background: transparent;
     border: none;
-    padding: 20px;
-    border-radius: 5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    color: white;
+    font-size: 1rem;
     transition: all 0.3s;
 }
 
-.submit-btn:hover {
-    background: var(--gold-light);
-    transform: translateY(-3px);
+.input-group label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.input-group input:focus~label,
+.input-group input:not(:placeholder-shown)~label,
+.input-group textarea:focus~label,
+.input-group textarea:not(:placeholder-shown)~label {
+    top: -10px;
+    font-size: 0.8rem;
+    color: var(--gold-main);
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-bottom-color: var(--gold-main);
+}
+
+.gold-shimmer-btn {
+    background: linear-gradient(135deg,
+            var(--gold-dark) 0%,
+            var(--gold-main) 50%,
+            var(--gold-dark) 100%) !important;
+    background-size: 200% auto !important;
+    animation: goldShimmer 3s infinite linear;
+    border: none !important;
+    color: var(--primary-black) !important;
+    font-weight: 800 !important;
+    width: 100%;
+    padding: 20px !important;
+}
+
+@keyframes goldShimmer {
+    to {
+        background-position: 200% center;
+    }
 }
 
 /* --- Footer --- */
@@ -750,6 +834,113 @@ footer {
     z-index: 10;
 }
 
+/* --- Spectacular 24K Mobile Menu Overlay --- */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+    z-index: 3000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+    opacity: 0;
+}
+
+.mobile-menu-overlay.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.mobile-menu-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 3rem;
+    color: var(--gold-main);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.mobile-menu-close:hover {
+    transform: rotate(90deg);
+}
+
+.mobile-menu-content {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.mobile-menu-logo img {
+    height: 120px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-main);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    animation: float-subtle 4s infinite ease-in-out;
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.mobile-nav-links a {
+    text-decoration: none;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.8rem;
+    color: var(--gold-main);
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.4s;
+    opacity: 0;
+    transform: translateY(30px);
+    display: block;
+    animation: shimmer 10s infinite linear;
+}
+
+.mobile-menu-overlay.active .mobile-nav-links a {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-nav-links a:hover {
+    color: var(--gold-main);
+    letter-spacing: 5px;
+}
+
+.mobile-menu-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.social-links-mobile {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.social-links-mobile a {
+    color: var(--gold-main);
+    font-size: 1.8rem;
+}
+
+.gold-text {
+    color: var(--gold-main);
+    font-size: 1.2rem;
+}
+
+/* --- Product Modal Styles --- */
 .modal-img-side img {
     width: 100%;
     height: 100%;
@@ -874,7 +1065,7 @@ footer {
     }
 
     .mobile-menu-btn {
-        display: block;
+        display: flex;
     }
 
     .gallery-grid {
@@ -891,7 +1082,12 @@ footer {
 
     .contact-container {
         grid-template-columns: 1fr;
-        padding: 30px 20px;
+        padding: 50px 30px;
+        gap: 40px;
+    }
+
+    .contact-info h3 {
+        font-size: 2.8rem;
     }
 
     .section-title h2 {
