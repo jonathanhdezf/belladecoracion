@@ -465,10 +465,8 @@ nav {
     width: 100%;
     overflow: hidden;
     position: relative;
-    padding: 40px 10px;
-    /* Increased padding to prevent shadow clipping */
-    margin: 0 -10px;
-    /* Offset padding to keep alignment */
+    padding: 60px 0;
+    /* Vertical space for floating icons */
     z-index: 1;
 }
 
@@ -479,16 +477,15 @@ nav {
 }
 
 .testimonial-card {
-    min-width: calc(33.333% - 20px);
-    background: rgba(10, 10, 10, 0.8);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    padding: 50px 40px;
+    flex: 0 0 calc(33.333% - 20px);
+    background: rgba(10, 10, 10, 0.82);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    padding: 60px 30px;
     border-radius: 20px;
-    border: 1px solid rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.15);
     position: relative;
-    flex-shrink: 0;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -606,7 +603,7 @@ nav {
 
 @media (max-width: 992px) {
     .testimonial-card {
-        min-width: calc(50% - 15px);
+        flex: 0 0 calc(50% - 15px);
     }
 }
 
@@ -913,15 +910,17 @@ footer {
     }
 
     .testimonial-card {
-        padding: 50px 30px 40px;
+        flex: 0 0 100%;
+        padding: 50px 20px 40px;
         margin-top: 20px;
     }
 
     .testimonial-card p {
         font-size: 0.95rem;
-        line-height: 1.7;
+        line-height: 1.6;
         margin-bottom: 20px;
         max-width: 100%;
+        word-break: break-word;
     }
 
     .testimonial-card span {
