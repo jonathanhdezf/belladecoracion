@@ -468,9 +468,32 @@
         menuToggle.addEventListener('click', toggleMenu);
         menuClose.addEventListener('click', closeMenu);
 
-        // Ensure links close the menu
+        // Precise 24K Navigation for Mobile Devices
         mobileLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
+            link.addEventListener('click', (e) => {
+                // Prevent default to control the flow
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                if (targetSection) {
+                    // 1. Close the menu first
+                    closeMenu();
+
+                    // 2. Wait for the menu transition to start/clear
+                    // This is the "secret sauce" for mobile fixed overlays
+                    setTimeout(() => {
+                        const headerOffset = 80;
+                        const elementPosition = targetSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 400);
+                }
+            });
         });
 
         // Testimonial Carousel Logic
