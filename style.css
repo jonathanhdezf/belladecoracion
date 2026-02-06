@@ -135,6 +135,7 @@ header {
     width: 100%;
     z-index: 1000;
     background: var(--glass-dark);
+    -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     transition: all 0.3s ease;
@@ -399,8 +400,9 @@ nav {
 .gallery-item:hover {
     transform: scale(1.03) translateY(-10px);
     border-color: var(--gold-main);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
     z-index: 5;
+    cursor: pointer;
 }
 
 .gallery-overlay {
@@ -564,6 +566,113 @@ footer {
     margin-top: 10px;
     opacity: 0.5;
     color: var(--text-white);
+}
+
+/* --- Modal Styles --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: var(--secondary-black);
+    border: 1px solid var(--gold-main);
+    max-width: 900px;
+    width: 100%;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    position: relative;
+    animation: float 10s ease-in-out infinite;
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: var(--gold-main);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.modal-img-side img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-details-side {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.modal-details-side h3 {
+    font-size: 2.5rem;
+    color: var(--gold-main);
+    margin-bottom: 20px;
+}
+
+.modal-details-side ul {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+.modal-details-side ul li {
+    margin-bottom: 10px;
+    color: #ddd;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-details-side ul li i {
+    color: var(--gold-main);
+    font-size: 0.8rem;
+}
+
+.modal-price {
+    font-size: 2rem;
+    color: var(--gold-light);
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.modal-wa-btn {
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-img-side {
+        height: 300px;
+    }
+
+    .modal-details-side {
+        padding: 25px;
+    }
 }
 
 .social-links {

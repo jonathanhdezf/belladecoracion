@@ -91,39 +91,58 @@
         <div class="container">
             <div class="section-title">
                 <h2>Galería de Eventos</h2>
+                <p style="color: var(--gold-main); opacity: 0.8; margin-top: -30px;">Toca una imagen para ver detalles
+                </p>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="assets/balloons.png" alt="Evento Premium 1">
-                    <div class="gallery-overlay"><span class="script-font"
-                            style="color: var(--gold-main); font-size: 1.5rem;">Bodas Reales</span></div>
+                <div class="gallery-item" onclick="openProductModal('spiderman')">
+                    <img src="assets/gallery_1.jpg" alt="Arreglo Spiderman">
+                    <div class="gallery-overlay"><span class="script-font gallery-text">Spiderman Edition</span></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="assets/breakfast.png" alt="Evento Premium 2">
-                    <div class="gallery-overlay"><span class="script-font"
-                            style="color: var(--gold-main); font-size: 1.5rem;">Aniversarios Gold</span></div>
+                <div class="gallery-item" onclick="openProductModal('chrome_blue')">
+                    <img src="assets/gallery_2.jpg" alt="Caja Temática Azul">
+                    <div class="gallery-overlay"><span class="script-font gallery-text">Chrome Blue Box</span></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="assets/snacks.png" alt="Evento Premium 3">
-                    <div class="gallery-overlay"><span class="script-font"
-                            style="color: var(--gold-main); font-size: 1.5rem;">Cenas Privadas</span></div>
+                <div class="gallery-item" onclick="openProductModal('silver_night')">
+                    <img src="assets/gallery_3.jpg" alt="Silver Night">
+                    <div class="gallery-overlay"><span class="script-font gallery-text">Silver Night</span></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="assets/logo.jpg" alt="Evento Premium 4" class="gallery-img-contain">
-                    <div class="gallery-overlay"><span class="script-font gallery-text">Identidad de Marca</span></div>
+                <div class="gallery-item" onclick="openProductModal('healthy_box')">
+                    <img src="assets/gallery_4.jpg" alt="Box Healthy">
+                    <div class="gallery-overlay"><span class="script-font gallery-text">Healthy Breakfast</span></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="assets/balloons.png" alt="Evento Premium 5" class="gallery-img-filter">
-                    <div class="gallery-overlay"><span class="script-font gallery-text">Lanzamientos VIP</span></div>
+                <div class="gallery-item" onclick="openProductModal('party_chips')">
+                    <img src="assets/gallery_5.jpg" alt="Party Chips Box">
+                    <div class="gallery-overlay"><span class="script-font gallery-text">Party & Snacks</span></div>
                 </div>
-                <div class="gallery-item">
-                    <img src="assets/breakfast.png" alt="Evento Premium 6">
-                    <div class="gallery-overlay"><span class="script-font"
-                            style="color: var(--gold-main); font-size: 1.5rem;">Conceptos Únicos</span></div>
+                <div class="gallery-item" onclick="openProductModal('logo_brand')">
+                    <img src="assets/logo.jpg" alt="Nuestra Marca" class="gallery-img-contain">
+                    <div class="gallery-overlay"><span class="script-font gallery-text">Crea tu Diseño</span></div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProductModal()">&times;</span>
+            <div class="modal-img-side">
+                <img id="modalImg" src="" alt="Producto">
+            </div>
+            <div class="modal-details-side">
+                <h3 id="modalTitle">Título del Arreglo</h3>
+                <ul id="modalList">
+                    <!-- Dynamic List -->
+                </ul>
+                <div class="modal-price" id="modalPrice">Precio: $430</div>
+                <a id="modalWA" href="https://wa.me/###########" target="_blank"
+                    class="cta-btn whatsapp-btn modal-wa-btn">
+                    <i class="fab fa-whatsapp"></i> Ordenar Ahora
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Testimonials -->
     <section class="testimonials" id="testimonios">
@@ -248,6 +267,88 @@
 
         init();
         animate();
+
+        // Product Data
+        const productsData = {
+            'spiderman': {
+                title: 'Temático Spiderman (6 Años)',
+                img: 'assets/gallery_1.jpg',
+                price: '$450',
+                items: ['Globo Número Gigante', 'Vinil Spiderman', 'Globo Burbuja con Confeti', 'Sandwich Gourmet', 'Jugo Ole', 'Fruta Premium']
+            },
+            'chrome_blue': {
+                title: 'Desayuno Chrome Blue',
+                img: 'assets/gallery_2.jpg',
+                price: '$430',
+                items: ['Arreglo de Globos Chrome', 'Globo "Feliz Cumple"', 'Obleas con Chocolate', 'Sandwich de Jamón', 'Bebida a elegir', 'Fruta Picada']
+            },
+            'silver_night': {
+                title: 'Noche Plateada VIP',
+                img: 'assets/gallery_3.jpg',
+                price: '$490',
+                items: ['Combo Globos Metalizados', 'Base Satinada', 'Sandwich Artesanal', 'Jugo Natural', 'Yogurt con Granola', 'Detalle Sorpresa']
+            },
+            'healthy_box': {
+                title: 'Healthy Box Deluxe',
+                img: 'assets/gallery_4.jpg',
+                price: '$380',
+                items: ['Caja de Madera Decorada', 'Sandwich de Pavo', 'Yogurt Griego', 'Frutos Rojos', 'Jugo de Naranja 100%', 'Mix de Semillas']
+            },
+            'party_chips': {
+                title: 'Snack & Party Box',
+                img: 'assets/gallery_5.jpg',
+                price: '$410',
+                items: ['Mini Arco de Globos', 'Papas Fritos Especial', 'Caribe Cooler', 'Sandwich Tradicional', 'Jugo de Temporada', 'Dulce de Cortesía']
+            },
+            'logo_brand': {
+                title: 'Diseño Personalizado',
+                img: 'assets/logo.jpg',
+                price: 'Desde $350',
+                items: ['Elige tu temática', 'Combina tus colores', 'Agrega tus snacks favoritos', 'Globo personalizado', 'Entrega a domicilio', 'Tarjeta dedicatoria']
+            }
+        };
+
+        const modal = document.getElementById('productModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalList = document.getElementById('modalList');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalWA = document.getElementById('modalWA');
+
+        function openProductModal(productId) {
+            const data = productsData[productId];
+            if (!data) return;
+
+            modalImg.src = data.img;
+            modalTitle.innerText = data.title;
+            modalPrice.innerText = `Precio: ${data.price}`;
+
+            // Build list
+            modalList.innerHTML = '';
+            data.items.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check-circle"></i> ${item}`;
+                modalList.appendChild(li);
+            });
+
+            // Update WhatsApp link with pre-filled message
+            const message = encodeURIComponent(`¡Hola! Me interesa el arreglo: ${data.title}`);
+            modalWA.href = `https://wa.me/###########?text=${message}`;
+
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                closeProductModal();
+            }
+        }
 
         // Simple Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
