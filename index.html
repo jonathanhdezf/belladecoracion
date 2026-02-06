@@ -432,19 +432,21 @@
             }
         }
 
-        // Spectacular 24K Mobile Menu Logic
-        const menuToggle = document.getElementById('menuToggle');
-        const menuClose = document.getElementById('menuClose');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+        function toggleMenu() {
+            const isOpen = mobileMenu.classList.contains('active');
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
 
         function openMenu() {
             mobileMenu.classList.add('active');
             menuToggle.classList.add('active');
             document.body.style.overflow = 'hidden';
-            // Stagger animation for links
             mobileLinks.forEach((link, index) => {
-                link.style.transitionDelay = `${0.2 + (index * 0.1)}s`;
+                link.style.transitionDelay = `${0.1 + (index * 0.05)}s`;
             });
         }
 
@@ -457,8 +459,13 @@
             });
         }
 
-        menuToggle.addEventListener('click', openMenu);
+        menuToggle.addEventListener('click', toggleMenu);
         menuClose.addEventListener('click', closeMenu);
+
+        // Ensure links close the menu
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
 
         // Testimonial Carousel Logic
         const track = document.getElementById('testimonialTrack');
