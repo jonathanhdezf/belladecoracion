@@ -45,11 +45,11 @@
                 <img src="assets/logo.jpg" alt="Bella Decoración Logo">
             </div>
             <nav class="mobile-nav-links">
-                <a href="#inicio" onclick="closeMenu()">Inicio</a>
-                <a href="#servicios" onclick="closeMenu()">Servicios</a>
-                <a href="#galeria" onclick="closeMenu()">Galería</a>
-                <a href="#testimonios" onclick="closeMenu()">Opiniones</a>
-                <a href="#contacto" onclick="closeMenu()">Contacto</a>
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#galeria">Galería</a>
+                <a href="#testimonios">Opiniones</a>
+                <a href="#contacto">Contacto</a>
             </nav>
             <div class="mobile-menu-footer">
                 <div class="social-links-mobile">
@@ -431,6 +431,12 @@
                 closeProductModal();
             }
         }
+
+        // Spectacular 24K Mobile Menu Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const menuClose = document.getElementById('menuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
 
         function toggleMenu() {
             const isOpen = mobileMenu.classList.contains('active');
