@@ -22,7 +22,7 @@
                     <span class="logo-text">Bella Decoración</span>
                 </a>
                 <div class="nav-links">
-                    <a href="#inicio">Colección</a>
+                    <a href="#inicio">Inicio</a>
                     <a href="#servicios">Servicios</a>
                     <a href="#galeria">Galería</a>
                     <a href="#testimonios">Opiniones</a>
@@ -89,7 +89,7 @@
     <section class="gallery" id="galeria">
         <div class="container">
             <div class="section-title">
-                <h2>Galería de Eventos</h2>
+                <h2>Galería de diseños</h2><br>
                 <p class="gallery-subtitle">Toca una imagen para ver detalles</p>
             </div>
             <div class="gallery-grid">
@@ -147,18 +147,48 @@
         <div class="container">
             <div class="section-title">
                 <h2>Experiencias Memorables</h2>
+                <p class="gallery-subtitle">Lo que nuestros clientes VIP dicen</p>
             </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p>"La atención al detalle y la elegancia del montaje en negro y dorado dejaron a todos mis
-                        invitados sin palabras. Absolutamente impecable."</p>
-                    <span>— Arq. Elena Vázquez</span>
+            <div class="testimonial-slider-container">
+                <div class="testimonial-slider-track" id="testimonialTrack">
+                    <div class="testimonial-card">
+                        <p>"La atención al detalle y la elegancia del montaje en negro y dorado dejaron a todos mis
+                            invitados sin palabras. Absolutamente impecable."</p>
+                        <span>— Arq. Elena Vázquez</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Contraté el desayuno gourmet para mi aniversario y fue mágico. La presentación es de otro
+                            mundo, se nota la pasión por el diseño."</p>
+                        <span>— Ing. Ricardo Méndez</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Bella Decoración transformó mi evento corporativo en una experiencia de élite. Los globos
+                            cromados duraron más de una semana perfectos."</p>
+                        <span>— Lic. Claudia Ortiz</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"El mejor regalo que pude dar. La caja de Spiderman fue un éxito total con mi hijo, y el
+                            sabor del sandwich artesanal es increíble."</p>
+                        <span>— Dra. Sofía Casals</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Sofisticación pura. Buscaba algo que no fuera el típico arreglo de globos y aquí encontré
+                            arte real. Recomendado al 100%."</p>
+                        <span>— Chef Marco Polo</span>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Servicio de primera clase. Desde el primer mensaje la atención fue personalizada y el
+                            resultado final superó mis expectativas."</p>
+                        <span>— Mtra. Leticia Guerra</span>
+                    </div>
                 </div>
-                <div class="testimonial-card">
-                    <p>"No es solo una decoración, es una firma de estilo. Bella Decoración elevó mi evento corporativo
-                        a otro nivel de profesionalismo."</p>
-                    <span>— CEO Luxury Events</span>
-                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn" id="prevSlide" title="Anterior"><i
+                        class="fas fa-chevron-left"></i></button>
+                <div class="slider-dots" id="sliderDots"></div>
+                <button class="slider-btn next-btn" id="nextSlide" title="Siguiente"><i
+                        class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -354,17 +384,63 @@
 
         mobileMenuBtn.addEventListener('click', () => {
             navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.background = 'var(--secondary-black)';
-                navLinks.style.padding = '30px';
-                navLinks.style.borderBottom = '1px solid var(--gold-main)';
-            }
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.width = '100%';
+            navLinks.style.background = 'var(--glass-dark)';
+            navLinks.style.padding = '20px';
         });
+
+        // Testimonial Carousel Logic
+        const track = document.getElementById('testimonialTrack');
+        const slides = Array.from(track.children);
+        const nextButton = document.getElementById('nextSlide');
+        const prevButton = document.getElementById('prevSlide');
+        const dotsContainer = document.getElementById('sliderDots');
+
+        let currentIndex = 0;
+
+        // Create Dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => updateSlider(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = Array.from(dotsContainer.children);
+
+        function updateSlider(index) {
+            const slideWidth = slides[0].getBoundingClientRect().width + 30; // 30 is gap
+            track.style.transform = `translateX(-${index * slideWidth}px)`;
+
+            // Update dots
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            currentIndex = index;
+        }
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlider(currentIndex);
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlider(currentIndex);
+        });
+
+        // Auto play (optional)
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlider(currentIndex);
+        }, 5000);
+
+        // Window resize adjustment
+        window.addEventListener('resize', () => updateSlider(currentIndex));
     </script>
 </body>
 
