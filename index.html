@@ -146,7 +146,7 @@
     <section class="testimonials" id="testimonios">
         <div class="container">
             <div class="section-title">
-                <h2>Experiencias Memorables</h2>
+                <h2>Experiencias Memorables</h2><br>
                 <p class="gallery-subtitle">Lo que nuestros clientes VIP dicen</p>
             </div>
             <div class="testimonial-slider-container">
@@ -399,48 +399,49 @@
         const nextButton = document.getElementById('nextSlide');
         const prevButton = document.getElementById('prevSlide');
         const dotsContainer = document.getElementById('sliderDots');
-
         let currentIndex = 0;
 
-        // Create Dots
-        slides.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => updateSlider(index));
-            dotsContainer.appendChild(dot);
-        });
-
-        const dots = Array.from(dotsContainer.children);
-
-        function updateSlider(index) {
-            const slideWidth = slides[0].getBoundingClientRect().width + 30; // 30 is gap
-            track.style.transform = `translateX(-${index * slideWidth}px)`;
-
-            // Update dots
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
-            currentIndex = index;
+        function getVisibleSlides() {
+            if (window.innerWidth <= 600) return 1;
+            if (window.innerWidth <= 992) return 2;
+            return 3;
         }
 
-        nextButton.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateSlider(currentIndex);
-        });
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            const maxIndex = slides.length - getVisibleSlides();
+            for (let i = 0; i <= maxIndex; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.onclick = () => updateSlider(i);
+                dotsContainer.appendChild(dot);
+            }
+        }
 
-        prevButton.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            updateSlider(currentIndex);
-        });
+        function updateSlider(index) {
+            const maxIndex = slides.length - getVisibleSlides();
+            if (index > maxIndex) index = 0;
+            if (index < 0) index = maxIndex;
 
-        // Auto play (optional)
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateSlider(currentIndex);
-        }, 5000);
+            const slideWidth = slides[0].getBoundingClientRect().width + 30;
+            track.style.transform = `translateX(-${index * slideWidth}px)`;
+            currentIndex = index;
 
-        // Window resize adjustment
-        window.addEventListener('resize', () => updateSlider(currentIndex));
+            Array.from(dotsContainer.children).forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        nextButton.onclick = () => updateSlider(currentIndex + 1);
+        prevButton.onclick = () => updateSlider(currentIndex - 1);
+
+        let sliderInterval = setInterval(() => updateSlider(currentIndex + 1), 5000);
+        track.onmouseenter = () => clearInterval(sliderInterval);
+        track.onmouseleave = () => sliderInterval = setInterval(() => updateSlider(currentIndex + 1), 5000);
+
+        window.onresize = () => { createDots(); updateSlider(0); };
+        createDots();
     </script>
 </body>
 

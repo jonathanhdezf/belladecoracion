@@ -438,9 +438,26 @@ nav {
     font-size: 1.5rem;
 }
 
-/* --- Testimonials --- */
 .testimonials {
     background: var(--secondary-black);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials::before {
+    content: 'OPINIONES';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15vw;
+    font-weight: 900;
+    color: var(--gold-main);
+    opacity: 0.03;
+    z-index: 0;
+    pointer-events: none;
+    letter-spacing: 20px;
+    font-family: 'Outfit', sans-serif;
 }
 
 /* --- Slider Styles --- */
@@ -459,16 +476,31 @@ nav {
 
 .testimonial-card {
     min-width: calc(33.333% - 20px);
-    background: var(--primary-black);
-    padding: 40px;
+    background: rgba(10, 10, 10, 0.8);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 50px 40px;
     border-radius: 20px;
     border: 1px solid rgba(212, 175, 55, 0.1);
     position: relative;
     flex-shrink: 0;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.testimonial-card::before {
+    content: '\f10d';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    font-size: 1.5rem;
+    color: var(--gold-main);
+    opacity: 0.3;
 }
 
 .testimonial-card:hover {
