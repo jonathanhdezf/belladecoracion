@@ -1446,6 +1446,13 @@ footer {
     padding: 50px 40px;
     text-align: center;
     border-radius: 30px;
+    overflow: hidden;
+}
+
+.sale-modal-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .sale-brand {
@@ -1498,14 +1505,14 @@ footer {
     }
 }
 
-.sale-modal-content h2 {
+.sale-modal-main h2 {
     font-size: 2.2rem;
     margin-bottom: 15px;
     color: #fff;
     line-height: 1.2;
 }
 
-.sale-modal-content p {
+.sale-modal-main p {
     color: #aaa;
     font-size: 1rem;
     margin-bottom: 30px;
@@ -1515,7 +1522,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
     margin-bottom: 40px;
 }
 
@@ -1537,14 +1544,66 @@ footer {
     border-radius: 15px;
 }
 
+@media (min-width: 992px) {
+    .sale-modal-box {
+        max-width: 850px;
+        padding: 60px;
+    }
+
+    .sale-modal-content-wrapper {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 50px;
+        text-align: left;
+        align-items: center;
+    }
+
+    .sale-modal-main h2 {
+        font-size: 2.8rem;
+    }
+
+    .sale-brand {
+        text-align: left;
+    }
+
+    .sale-features {
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 0;
+        background: rgba(212, 175, 55, 0.03);
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .sale-features span {
+        width: 100%;
+        background: transparent;
+        padding: 5px 0;
+        font-size: 1rem;
+    }
+
+    .sale-btn {
+        margin-top: 10px;
+        width: auto;
+        padding: 18px 50px;
+    }
+}
+
 @media (max-width: 600px) {
     .sale-modal-box {
         padding: 40px 25px;
-        width: 90%;
+        width: 92%;
     }
 
-    .sale-modal-content h2 {
+    .sale-modal-main h2 {
         font-size: 1.8rem;
+    }
+
+    .sale-features span {
+        padding: 6px 12px;
+        font-size: 0.75rem;
     }
 }
 
