@@ -257,6 +257,8 @@ nav {
 
 .hero-logo-floating img {
     width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
     animation: glow 4s infinite ease-in-out;
