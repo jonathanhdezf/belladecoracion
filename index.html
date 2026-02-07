@@ -222,7 +222,10 @@
         <div class="modal-content">
             <span class="modal-close" onclick="closeProductModal()">&times;</span>
             <div class="modal-img-side">
-                <img id="modalImg" src="" alt="Producto">
+                <div class="zoom-container" onclick="toggleZoom(this)">
+                    <img id="modalImg" src="" alt="Producto">
+                </div>
+                <div class="zoom-hint"><i class="fas fa-search-plus"></i> Toca para ver detalles</div>
             </div>
             <div class="modal-details-side">
                 <h3 id="modalTitle">Título del Arreglo</h3>
@@ -583,9 +586,9 @@
                 modalList.appendChild(li);
             });
 
-            // Update WhatsApp link with pre-filled message
-            const message = encodeURIComponent(`¡Hola! Me interesa el arreglo: ${data.title}`);
-            modalWA.href = `https://wa.me/###########?text=${message}`;
+            // Update WhatsApp link with details
+            const message = encodeURIComponent(`🚨 *INTERÉS EN DISEÑO PREMIUM*\n\nHola, me interesa agendar el arreglo: *${data.title}*\n\n💰 Precio: ${data.price}\n✨ Detalles:\n${data.items.map(i => `• ${i}`).join('\n')}\n\nEspero su respuesta para confirmar disponibilidad.`);
+            modalWA.href = `https://wa.me/522311024672?text=${message}`;
 
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
@@ -593,9 +596,16 @@
             history.pushState({ modal: 'product' }, '');
         }
 
+        function toggleZoom(container) {
+            container.classList.toggle('zoomed');
+        }
+
         function closeProductModal() {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
+            // Reset zoom
+            const zoomContainer = document.querySelector('.zoom-container');
+            if (zoomContainer) zoomContainer.classList.remove('zoomed');
             // Remove state if closed manually
             if (history.state && history.state.modal === 'product') {
                 history.back();
