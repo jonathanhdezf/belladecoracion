@@ -1105,12 +1105,44 @@ footer {
 
 .modal-close {
     position: absolute;
-    top: 15px;
+    top: 20px;
     right: 20px;
+    width: 45px;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--gold-main);
+    border-radius: 50%;
     color: var(--gold-main);
-    font-size: 2rem;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    z-index: 10;
+    z-index: 100;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.modal-close:hover {
+    background: var(--gold-main);
+    color: #000;
+    transform: scale(1.1) rotate(90deg);
+}
+
+.modal-close:active {
+    transform: scale(0.9);
+}
+
+@media (max-width: 768px) {
+    .modal-close {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        background: var(--secondary-black);
+        /* More contrast on mobile */
+        border-width: 2px;
+    }
 }
 
 /* --- Spectacular 24K Mobile Menu Overlay --- */

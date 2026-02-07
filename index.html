@@ -553,11 +553,17 @@
 
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+            // Back Button Fix
+            history.pushState({ modal: 'product' }, '');
         }
 
         function closeProductModal() {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
+            // Remove state if closed manually
+            if (history.state && history.state.modal === 'product') {
+                history.back();
+            }
         }
 
         window.onclick = function (event) {
@@ -688,6 +694,8 @@
             openPaymentBtn.onclick = () => {
                 paymentModal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
+                // Back Button Fix
+                history.pushState({ modal: 'payment' }, '');
             };
         }
 
@@ -695,6 +703,10 @@
             closePaymentBtn.onclick = () => {
                 paymentModal.style.display = 'none';
                 document.body.style.overflow = 'auto';
+                // Remove state if closed manually
+                if (history.state && history.state.modal === 'payment') {
+                    history.back();
+                }
             };
         }
 
@@ -703,10 +715,26 @@
                 closeProductModal();
             }
             if (event.target == paymentModal) {
+                // Manual close triggers back if state exists
+                paymentModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                if (history.state && history.state.modal === 'payment') {
+                    history.back();
+                }
+            }
+        }
+
+        // Global Back Button Handler for Modals
+        window.onpopstate = function (event) {
+            if (modal.style.display === 'flex') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            if (paymentModal.style.display === 'flex') {
                 paymentModal.style.display = 'none';
                 document.body.style.overflow = 'auto';
             }
-        }
+        };
 
         function copyToClipboard(elementId) {
             const text = document.getElementById(elementId).innerText;
