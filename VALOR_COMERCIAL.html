@@ -42,6 +42,7 @@
         /* Floating elements for aesthetics */
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(212, 175, 55, 0.1);
             border-radius: 24px;
@@ -71,6 +72,7 @@
             margin-bottom: 20px;
             background: linear-gradient(to bottom, #fff 30%, var(--gold-light));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -79,7 +81,8 @@
             color: var(--text-gray);
             max-width: 800px;
             margin: 0 auto;
-            text-wrap: balance;
+            /* text-wrap balance fallback */
+            width: 100%;
         }
 
         /* Packages Grid */
@@ -290,6 +293,21 @@
                 color: black !important;
             }
 
+            footer h2 {
+                font-family: 'Dancing Script', cursive;
+                font-size: 2.2rem;
+                color: var(--gold-main);
+                display: block;
+            }
+
+            .footer-tagline-sub {
+                margin-top: 10px;
+            }
+
+            .case-description {
+                margin-bottom: 0;
+            }
+
             .contact-btn {
                 display: none;
             }
@@ -368,7 +386,8 @@
                     <h4>Bella Decoración</h4>
                 </div>
             </div>
-            <p>Este proyecto representa nuestro estándar **Premium**. Implementamos una arquitectura web a medida sin
+            <p class="case-description">Este proyecto representa nuestro estándar **Premium**. Implementamos una
+                arquitectura web a medida sin
                 plantillas, con efectos de partículas líquidas, navegación inteligente para móviles y una narrativa que
                 posiciona a la fundadora como líder en su mercado.</p>
         </div>
@@ -395,10 +414,8 @@
 
         <!-- Footer / Closing -->
         <footer>
-            <h2
-                style="font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--gold-main); display: block;">
-                "Exclusividad en cada detalle"</h2>
-            <p style="margin-top: 10px;">En Fiberlink, no solo creamos páginas, construimos el prestigio de tu marca.
+            <h2>"Exclusividad en cada detalle"</h2>
+            <p class="footer-tagline-sub">En Fiberlink, no solo creamos páginas, construimos el prestigio de tu marca.
             </p>
 
             <a href="https://wa.me/522311024672" class="contact-btn">Iniciar mi Proyecto Premium</a>
