@@ -774,6 +774,146 @@ nav {
     line-height: 1.6;
 }
 
+/* --- Payment Methods Section --- */
+.payment-methods {
+    padding: 100px 0;
+    background: #000;
+}
+
+.payment-info-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: 60px auto 0;
+}
+
+.payment-card {
+    background: rgba(26, 26, 26, 0.4);
+    padding: 50px 40px;
+    border-radius: 25px;
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: transform 0.3s;
+}
+
+.payment-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold-main);
+}
+
+.gold-icon {
+    font-size: 3rem;
+    color: var(--gold-main);
+    margin-bottom: 25px;
+}
+
+.payment-card h3 {
+    color: var(--gold-main);
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.payment-card p {
+    color: #bbb;
+    margin-bottom: 25px;
+}
+
+.payment-trigger {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+}
+
+.payment-note {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Payment Modal Special --- */
+.payment-modal-box {
+    display: block !important;
+    padding: 50px;
+    max-width: 600px;
+    text-align: center;
+}
+
+.payment-modal-header h3 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.payment-modal-header p {
+    color: #888;
+    margin-bottom: 40px;
+}
+
+.bank-details-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.bank-item label {
+    display: block;
+    color: var(--gold-dark);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.copy-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.copy-field span {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.15rem;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.copy-field button {
+    background: none;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    color: var(--gold-main);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-field button:hover {
+    background: var(--gold-main);
+    color: #000;
+}
+
+.payment-modal-footer p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.payment-modal-footer i {
+    color: var(--gold-main);
+    margin-right: 8px;
+}
+
 .contact {
     position: relative;
     overflow: hidden;
@@ -1368,6 +1508,20 @@ footer {
         border-left: none;
         border-top: 1px solid var(--gold-dark);
         padding-top: 30px;
+    }
+
+    .payment-info-box {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+
+    .payment-modal-box {
+        padding: 30px 20px;
+        width: 95%;
+    }
+
+    .copy-field span {
+        font-size: 0.9rem;
     }
 
     .vision-grid {

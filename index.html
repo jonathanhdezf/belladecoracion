@@ -25,6 +25,8 @@
                     <a href="#inicio">Inicio</a>
                     <a href="#nosotros">Nosotros</a>
                     <a href="#servicios">Servicios</a>
+                    <a href="#vision">Visión</a>
+                    <a href="#pagos">Pagos</a>
                     <a href="#galeria">Galería</a>
                     <a href="#testimonios">Opiniones</a>
                     <a href="#contacto">Escríbenos</a>
@@ -49,6 +51,7 @@
                 <a href="#inicio">Inicio</a>
                 <a href="#nosotros">Nosotros</a>
                 <a href="#servicios">Servicios</a>
+                <a href="#pagos">Pagos</a>
                 <a href="#galeria">Galería</a>
                 <a href="#testimonios">Opiniones</a>
                 <a href="#contacto">Contacto</a>
@@ -285,6 +288,71 @@
             </div>
         </div>
     </section>
+
+    <!-- Payment Methods Section -->
+    <section class="payment-methods" id="pagos">
+        <div class="container">
+            <div class="section-title">
+                <span class="script-font gold-text">Transacciones Seguras</span>
+                <h2>Formas de Pago</h2>
+            </div>
+            <div class="payment-info-box">
+                <div class="payment-card">
+                    <i class="fas fa-university gold-icon"></i>
+                    <h3>Depósito o Transferencia</h3>
+                    <p>Aceptamos pagos directos para agendar tu evento de forma inmediata.</p>
+                    <button class="cta-btn btn-secondary payment-trigger" id="openPaymentModal">Ver Datos
+                        Bancarios</button>
+                </div>
+                <div class="payment-card">
+                    <i class="fas fa-hand-holding-usd gold-icon"></i>
+                    <h3>Efectivo</h3>
+                    <p>Contamos con recepción de pagos en Teziutlán, Puebla para tu comodidad.</p>
+                    <span class="payment-note">Agenda previa requerida</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content payment-modal-box">
+            <span class="modal-close" id="closePaymentModal">&times;</span>
+            <div class="payment-modal-header">
+                <h3 class="gold-text">Información Bancaria</h3>
+                <p>Usa estos datos para realizar tu depósito o transferencia.</p>
+            </div>
+            <div class="bank-details-grid">
+                <div class="bank-item">
+                    <label>Titular</label>
+                    <div class="copy-field">
+                        <span id="bank-name">Isabel Fernández</span>
+                        <button onclick="copyToClipboard('bank-name')" title="Copiar"><i
+                                class="far fa-copy"></i></button>
+                    </div>
+                </div>
+                <div class="bank-item">
+                    <label>Cuenta (Bancomer)</label>
+                    <div class="copy-field">
+                        <span id="bank-account">0123 4567 8901 2345</span>
+                        <button onclick="copyToClipboard('bank-account')" title="Copiar"><i
+                                class="far fa-copy"></i></button>
+                    </div>
+                </div>
+                <div class="bank-item">
+                    <label>CLABE Interbancaria</label>
+                    <div class="copy-field">
+                        <span id="bank-clabe">0121 2345 6789 0123 45</span>
+                        <button onclick="copyToClipboard('bank-clabe')" title="Copiar"><i
+                                class="far fa-copy"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-modal-footer">
+                <p><i class="fas fa-info-circle"></i> Una vez realizado el pago, envía tu comprobante vía WhatsApp.</p>
+            </div>
+        </div>
+    </div>
 
     <section class="contact" id="contacto">
         <div class="contact-bg-shape"></div>
@@ -611,6 +679,50 @@
 
         window.onresize = () => { createDots(); updateSlider(0); };
         createDots();
+        // Payment Modal Logic
+        const paymentModal = document.getElementById('paymentModal');
+        const openPaymentBtn = document.getElementById('openPaymentModal');
+        const closePaymentBtn = document.getElementById('closePaymentModal');
+
+        if (openPaymentBtn) {
+            openPaymentBtn.onclick = () => {
+                paymentModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            };
+        }
+
+        if (closePaymentBtn) {
+            closePaymentBtn.onclick = () => {
+                paymentModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            };
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                closeProductModal();
+            }
+            if (event.target == paymentModal) {
+                paymentModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector(`button[onclick="copyToClipboard('${elementId}')"]`);
+                const originalIcon = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check gold-text"></i>';
+                btn.style.borderColor = 'var(--gold-main)';
+                setTimeout(() => {
+                    btn.innerHTML = originalIcon;
+                    btn.style.borderColor = 'rgba(212, 175, 55, 0.2)';
+                }, 2000);
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+        }
     </script>
 </body>
 
