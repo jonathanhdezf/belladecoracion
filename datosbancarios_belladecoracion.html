@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Bancarios VIP | Bella Decoración</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --gold-light: #f1d592;
+            --gold-main: #d4af37;
+            --gold-dark: #aa841e;
+            --black-deep: #050505;
+            --black-soft: #141414;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0c0c0c;
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header-msg {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header-msg h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: var(--gold-main);
+            margin-bottom: 10px;
+        }
+
+        .header-msg p {
+            color: #888;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Debit Card Design */
+        .credit-card {
+            width: 100%;
+            max-width: 450px;
+            height: 280px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+            border-radius: 20px;
+            position: relative;
+            padding: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Holographic effect */
+        .credit-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-type {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+
+        .bank-logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .chip {
+            width: 50px;
+            height: 40px;
+            background: linear-gradient(135deg, #f1d592 0%, #aa841e 100%);
+            border-radius: 8px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .chip::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 70%;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+
+        .card-number-label {
+            font-size: 0.6rem;
+            color: #888;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-number {
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .clabe-container {
+            margin-bottom: 15px;
+        }
+
+        .clabe-number {
+            font-size: 0.9rem;
+            color: var(--gold-light);
+            letter-spacing: 1px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .holder-name {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gold-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+
+        .brand-icon img {
+            width: 80%;
+            border-radius: 50%;
+        }
+
+        /* Buttons Container */
+        .controls {
+            margin-top: 40px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .action-btn {
+            background: var(--gold-main);
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+            background: #fff;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            color: #555;
+            font-size: 0.75rem;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        /* Print optimization */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .controls,
+            .header-msg p {
+                display: none;
+            }
+
+            .credit-card {
+                border: 1px solid #000;
+                box-shadow: none;
+                -webkit-print-color-adjust: exact;
+                margin-top: 50px;
+            }
+
+            .header-msg h1 {
+                color: black !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .credit-card {
+                max-width: 320px;
+                height: 220px;
+                padding: 20px;
+            }
+
+            .card-number {
+                font-size: 1.1rem;
+                letter-spacing: 2px;
+            }
+
+            .clabe-number {
+                font-size: 0.75rem;
+            }
+
+            .header-msg h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header-msg">
+        <h1>Bella Decoración</h1>
+        <p>Tarjeta de Datos Bancarios VIP</p>
+    </div>
+
+    <!-- The "Debit Card" -->
+    <div class="credit-card" id="cardExport">
+        <div class="card-top">
+            <div class="card-type">PREMIUM PROJECTS</div>
+            <div class="bank-logo">BBVA Bancomer</div>
+        </div>
+
+        <div class="chip"></div>
+
+        <div class="card-mid">
+            <div class="card-number-label">Número de Cuenta</div>
+            <div class="card-number">0123 4567 8901 2345</div>
+
+            <div class="clabe-container">
+                <div class="card-number-label">CLABE Interbancaria</div>
+                <div class="clabe-number">0121 2345 6789 0123 45</div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <div class="info-group">
+                <div class="card-number-label">Titular de la Cuenta</div>
+                <div class="holder-name">Isabel Fernández</div>
+            </div>
+            <div class="brand-icon">
+                <img src="assets/logo.jpg" alt="Logo">
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button onclick="window.print()" class="action-btn">
+            <i class="fas fa-file-pdf"></i> Guardar como PDF / Imprimir
+        </button>
+        <a href="index.html" class="action-btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Regresar
+        </a>
+    </div>
+
+    <p class="footer-note">Al guardar como PDF, selecciona "Márgenes: Ninguno" y "Gráficos de fondo" en la configuración
+        de impresión para el mejor resultado.</p>
+
+</body>
+
+</html>
