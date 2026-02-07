@@ -1462,6 +1462,7 @@ footer {
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 20px;
+    white-space: nowrap;
 }
 
 .sale-status-badge {
@@ -1599,6 +1600,11 @@ footer {
 
     .sale-modal-main h2 {
         font-size: 1.8rem;
+    }
+
+    .sale-brand {
+        font-size: 0.7rem;
+        letter-spacing: 3px;
     }
 
     .sale-features span {
