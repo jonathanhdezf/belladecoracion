@@ -415,6 +415,15 @@
             </div>
             <p class="footer-copy">BELLA DECORACIÓN &copy; 2026</p>
             <p class="footer-tagline">Decoraciones con estilo para tus momentos inolvidables</p>
+
+            <!-- Visit Counter -->
+            <div class="visit-counter-container">
+                <div class="visit-count-box">
+                    <span class="live-dot-aura"><span class="live-dot"></span></span>
+                    <span class="visit-label">Visitantes VIP:</span>
+                    <span id="visit-count" class="visit-number">000,000</span>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -751,6 +760,26 @@
                 console.error('Error al copiar: ', err);
             });
         }
+
+        // --- Simulated Premium Visit Counter ---
+        function updateVisitCounter() {
+            const countDisplay = document.getElementById('visit-count');
+            const baseVisits = 1250; // Prestige starting point
+            let currentVisits = parseInt(localStorage.getItem('bella_visits')) || 0;
+
+            // Only increment if it's a new session or every few reloads to look natural
+            if (!sessionStorage.getItem('counted')) {
+                currentVisits++;
+                localStorage.setItem('bella_visits', currentVisits);
+                sessionStorage.setItem('counted', 'true');
+            }
+
+            const total = baseVisits + currentVisits;
+            // Format with commas: 001,251
+            countDisplay.innerText = total.toString().padStart(6, '0').replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        window.addEventListener('load', updateVisitCounter);
     </script>
 </body>
 
