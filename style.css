@@ -544,8 +544,10 @@ nav {
     color: #eee;
     margin-bottom: 30px;
     line-height: 1.8;
-    text-wrap: balance;
-    /* Modern balance effect for supported browsers */
+    /* text-wrap: balance fallback */
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 90%;
 }
 
@@ -637,7 +639,141 @@ nav {
 }
 
 /* --- Contact Section --- */
-/* --- Contact Section Premium --- */
+/* --- About Section --- */
+.about {
+    padding: 100px 0;
+    background: #000;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.image-frame-gold {
+    position: relative;
+    padding: 20px;
+}
+
+.about-profile-img {
+    width: 100%;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+}
+
+.gold-aura-behind {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+    z-index: 1;
+    filter: blur(40px);
+}
+
+.section-gold-title {
+    font-size: 4rem;
+    color: var(--gold-main);
+    margin: 15px 0 30px;
+    line-height: 1;
+}
+
+.about-bio {
+    font-size: 1.2rem;
+    color: #ddd;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.about-philosophy {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: var(--gold-light);
+    border-left: 2px solid var(--gold-dark);
+    padding-left: 30px;
+    margin: 40px 0;
+}
+
+.location-tag {
+    color: var(--gold-main);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* --- Vision & Goals Section --- */
+.vision-goals {
+    padding: 100px 0;
+    background: linear-gradient(to bottom, #000, #0a0a0a);
+}
+
+.vision-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.vision-card {
+    background: rgba(20, 20, 20, 0.5);
+    padding: 60px 40px;
+    border-radius: 30px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.active-gold-border {
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+}
+
+.vision-card:hover {
+    transform: translateY(-15px);
+    border-color: var(--gold-main);
+    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+}
+
+.vision-icon-aura {
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, var(--gold-dark) 0%, transparent 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    border-radius: 50%;
+}
+
+.vision-icon-aura i {
+    font-size: 2rem;
+    color: var(--gold-main);
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+}
+
+.vision-card h3 {
+    color: var(--gold-main);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.vision-card p {
+    color: #bbb;
+    line-height: 1.6;
+}
+
 .contact {
     position: relative;
     overflow: hidden;
@@ -1088,6 +1224,21 @@ footer {
         flex-direction: column;
         align-items: center;
     }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+    }
+
+    .image-frame-gold {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .vision-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
@@ -1207,6 +1358,21 @@ footer {
         text-align: center;
         font-size: 0.85rem;
     }
+
+    .section-gold-title {
+        font-size: 3rem;
+    }
+
+    .about-philosophy {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid var(--gold-dark);
+        padding-top: 30px;
+    }
+
+    .vision-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1220,5 +1386,9 @@ footer {
 
     .testimonial-card {
         padding: 35px 20px;
+    }
+
+    .section-gold-title {
+        font-size: 2.5rem;
     }
 }
