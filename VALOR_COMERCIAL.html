@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Valor Comercial | Bella Decoración</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --gold-main: #d4af37;
+            --gold-light: #f1d592;
+            --gold-dark: #aa841e;
+            --black-deep: #050505;
+            --black-soft: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--black-deep);
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 40px;
+        }
+
+        .logo-box {
+            margin-bottom: 20px;
+        }
+
+        .logo-box img {
+            width: 120px;
+            border-radius: 50%;
+            border: 2px solid var(--gold-main);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: var(--gold-main);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 4px solid var(--gold-dark);
+            transition: transform 0.3s;
+        }
+
+        .section:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        h2 {
+            color: var(--gold-light);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2 i {
+            font-size: 1.4rem;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--gold-main);
+        }
+
+        .cost-breakdown {
+            margin-top: 20px;
+            font-weight: 600;
+            color: var(--gold-main);
+            text-align: right;
+            font-size: 1.2rem;
+        }
+
+        .total-box {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold-main));
+            color: #000;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 80px;
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .total-box h3 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .price-tag {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .currency {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .watermark {
+            position: fixed;
+            bottom: -50px;
+            right: -50px;
+            font-size: 15rem;
+            color: rgba(212, 175, 55, 0.03);
+            z-index: -1;
+            transform: rotate(-15deg);
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .section {
+                border: 1px solid #ddd;
+                background: none;
+                page-break-inside: avoid;
+            }
+
+            .total-box {
+                border: 2px solid gold;
+                background: none;
+            }
+
+            .price-tag {
+                color: black;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <i class="fas fa-gem watermark"></i>
+
+    <div class="container">
+        <header>
+            <div class="logo-box">
+                <img src="assets/logo.jpg" alt="Logo">
+            </div>
+            <h1>Bella Decoración</h1>
+            <p class="subtitle">Propuesta de Valor Integral | 2026</p>
+        </header>
+
+        <!-- Sección 1 -->
+        <div class="section">
+            <h2><i class="fas fa-paint-brush"></i> Identidad & Diseño de Marca</h2>
+            <ul>
+                <li><strong>Arquitectura Visual:</strong> Creación del concepto "Liquid Gold" aplicado a toda la
+                    presencia de la marca.</li>
+                <li><strong>Diseño Publicitario Digital:</strong> Assets optimizados para Instagram, Facebook y TikTok
+                    con estética premium.</li>
+                <li><strong>Diseño para Impresión:</strong> Preparación de línea gráfica para tarjetas de presentación,
+                    flyers y catálogos físicos.</li>
+                <li><strong>Storytelling Local:</strong> Posicionamiento de Isabel Fernández como referente de
+                    exclusividad en Teziutlán.</li>
+            </ul>
+            <p class="cost-breakdown">Inversión Estimada: $15,000.00 MXN</p>
+        </div>
+
+        <!-- Sección 2 -->
+        <div class="section">
+            <h2><i class="fas fa-code"></i> Ingeniería Web de Última Generación</h2>
+            <ul>
+                <li><strong>Plataforma Web App:</strong> Desarrollo a medida (No plantillas) con Vanilla JS para
+                    velocidad extrema.</li>
+                <li><strong>Efectos Visuales Avanzados:</strong> Sistema de partículas de oro fluido (Canvas API) y
+                    efectos de aura dorada.</li>
+                <li><strong>UX Espectacular 24K:</strong> Menú móvil animado escalonado y navegación "Back-button Fix"
+                    (History API).</li>
+                <li><strong>Conversión Directa:</strong> Integración de pedidos personalizados a WhatsApp y sistema de
+                    copiado bancario rápido.</li>
+            </ul>
+            <p class="cost-breakdown">Inversión Estimada: $32,000.00 MXN</p>
+        </div>
+
+        <!-- Sección 3 -->
+        <div class="section">
+            <h2><i class="fas fa-rocket"></i> Escalabilidad E-commerce & SEO</h2>
+            <ul>
+                <li><strong>Infraestructura Escalable:</strong> Código preparado para integrar catálogo dinámico y
+                    pasarela de pagos.</li>
+                <li><strong>Optimización SEO:</strong> Estructura semántica de alta relevancia para aparecer en
+                    buscadores locales.</li>
+                <li><strong>Dashboards VIP:</strong> Contador de visitas persistente con indicador de estado "Live".
+                </li>
+            </ul>
+            <p class="cost-breakdown">Inversión Estimada: $10,000.00 MXN</p>
+        </div>
+
+        <!-- TOTAL -->
+        <div class="total-box">
+            <h3>Valor Total del Proyecto Integral</h3>
+            <div class="price-tag"><span class="currency">$</span>57,000</div>
+            <p><strong>Pesos Mexicanos</strong></p>
+            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">Incluye: Estrategia, Diseño, Desarrollo,
+                Lanzamiento y Soporte Inicial.</p>
+        </div>
+
+        <div class="footer-note">
+            <p>Este documento es una estimación del valor comercial basado en estándares de agencias creativas premium.
+            </p>
+            <p><strong>BELLA DECORACIÓN - "Exclusividad que Flota"</strong></p>
+        </div>
+    </div>
+
+</body>
+
+</html>
