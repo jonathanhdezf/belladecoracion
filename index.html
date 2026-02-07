@@ -406,7 +406,8 @@
                     </div>
 
                     <div class="whatsapp-container">
-                        <a href="https://wa.me/###########" class="cta-btn whatsapp-btn" title="Contact Us on WhatsApp">
+                        <a href="https://wa.me/522311024672" class="cta-btn whatsapp-btn"
+                            title="Contact Us on WhatsApp">
                             <i class="fab fa-whatsapp"></i> Contacto Directo
                         </a>
                     </div>
@@ -425,8 +426,8 @@
                             <textarea id="vision" rows="4" required placeholder=" "></textarea>
                             <label for="vision">Háblanos de tu visión...</label>
                         </div>
-                        <button type="submit" class="submit-btn gold-shimmer-btn">
-                            Consultar Disponibilidad
+                        <button type="submit" id="submitContact" class="submit-btn gold-shimmer-btn">
+                            <span class="btn-text">Consultar Disponibilidad</span>
                         </button>
                     </form>
                 </div>
@@ -857,6 +858,39 @@
         }
 
         window.addEventListener('load', updateVisitCounter);
+
+        // --- Contact Form Logic (WhatsApp Redirect) ---
+        const contactForm = document.querySelector('.contact-form');
+        const submitBtn = document.getElementById('submitContact');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const vision = document.getElementById('vision').value;
+
+                // Create Structured Message
+                const message = encodeURIComponent(`📜 *NUEVO PROYECTO - CONTACTO WEB*\n\n👤 *Nombre:* ${name}\n📧 *Correo:* ${email}\n\n✨ *Visión del Cliente:*\n${vision}\n\n_Enviado desde el Sitio Web de Bella Decoración_`);
+
+                // Show Success Feedback
+                const originalContent = submitBtn.innerHTML;
+                submitBtn.style.pointerEvents = 'none';
+                submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> ¡ENVIANDO DATOS!';
+                submitBtn.classList.add('success-state');
+
+                setTimeout(() => {
+                    window.open(`https://wa.me/522311024672?text=${message}`, '_blank');
+
+                    // Reset Form
+                    contactForm.reset();
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.style.pointerEvents = 'auto';
+                    submitBtn.classList.remove('success-state');
+                }, 1500);
+            });
+        }
     </script>
 </body>
 
