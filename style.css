@@ -1507,10 +1507,15 @@ footer {
 }
 
 .sale-modal-main h2 {
-    font-size: 2.2rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.2rem;
     margin-bottom: 15px;
-    color: #fff;
-    line-height: 1.2;
+    background: linear-gradient(to bottom, #fff 20%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .sale-modal-main p {
@@ -1560,7 +1565,7 @@ footer {
     }
 
     .sale-modal-main h2 {
-        font-size: 2.8rem;
+        font-size: 4rem;
     }
 
     .sale-brand {
@@ -1599,7 +1604,7 @@ footer {
     }
 
     .sale-modal-main h2 {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
     }
 
     .sale-brand {
