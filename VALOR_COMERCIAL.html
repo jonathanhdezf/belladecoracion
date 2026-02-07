@@ -265,6 +265,74 @@
             color: var(--gold-main);
         }
 
+        /* Investment Detail Styles */
+        .investment-breakdown {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 20px;
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+        }
+
+        .investment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .investment-item:last-child {
+            border-bottom: none;
+        }
+
+        .inv-label {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .inv-price {
+            color: var(--gold-light);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        .total-investment-card {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold-main));
+            color: #000;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .total-investment-card h5 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .total-amount {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .usage-instructions {
+            margin-top: 60px;
+            font-size: 0.85rem;
+            color: #666;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .usage-instructions i {
+            color: var(--gold-main);
+            margin-right: 8px;
+        }
+
         @media (max-width: 900px) {
 
             .packages-grid,
@@ -465,6 +533,30 @@
                 arquitectura web a medida sin
                 plantillas, con efectos de partículas líquidas, navegación inteligente para móviles y una narrativa que
                 posiciona a la fundadora como líder en su mercado.</p>
+
+            <!-- Desglose Ejecutivo Restaurado -->
+            <div class="investment-breakdown">
+                <h4 style="color: var(--gold-main); margin-bottom: 20px; font-size: 1.2rem;">Detalle de Inversión
+                    Ejecutiva</h4>
+                <div class="investment-item">
+                    <span class="inv-label">Diseño & Branding Premium</span>
+                    <span class="inv-price">$15,000 MXN</span>
+                </div>
+                <div class="investment-item">
+                    <span class="inv-label">Ingeniería Web High-End (Canvas API)</span>
+                    <span class="inv-price">$32,000 MXN</span>
+                </div>
+                <div class="investment-item">
+                    <span class="inv-label">Escalabilidad E-commerce & SEO de Élite</span>
+                    <span class="inv-price">$10,000 MXN</span>
+                </div>
+
+                <div class="total-investment-card">
+                    <h5>Inversión Total del Proyecto</h5>
+                    <div class="total-amount">$57,000</div>
+                    <p style="font-weight: 700; font-size: 0.8rem;">PESOS MEXICANOS</p>
+                </div>
+            </div>
         </div>
 
         <!-- Information Info -->
@@ -498,6 +590,13 @@
             <div class="footer-info">
                 <span><i class="fas fa-envelope"></i> contacto@fiberlink.mx</span>
                 <span><i class="fab fa-whatsapp"></i> +52 231 102 4672</span>
+            </div>
+
+            <div class="usage-instructions">
+                <p><i class="fas fa-desktop"></i> <strong>Presentación:</strong> Abre este archivo en cualquier
+                    navegador para una experiencia interactiva.</p>
+                <p><i class="fas fa-file-pdf"></i> <strong>Exportar PDF:</strong> Presiona <code>Ctrl + P</code> y
+                    selecciona "Guardar como PDF" para enviar una cotización formal.</p>
             </div>
         </footer>
     </div>
