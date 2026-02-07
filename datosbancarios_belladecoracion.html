@@ -264,22 +264,39 @@
 
         @media (max-width: 480px) {
             .credit-card {
-                max-width: 320px;
-                height: 220px;
-                padding: 20px;
+                max-width: 330px;
+                height: 230px;
+                padding: 18px 20px 25px 20px;
+                /* More bottom padding for name */
+            }
+
+            .chip {
+                display: none;
+                /* Removed for space on mobile */
             }
 
             .card-number {
-                font-size: 1.1rem;
+                font-size: 1.15rem;
                 letter-spacing: 2px;
+                margin-bottom: 5px;
             }
 
             .clabe-number {
                 font-size: 0.75rem;
             }
 
+            .holder-name {
+                font-size: 0.9rem;
+            }
+
             .header-msg h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .card-footer {
+                margin-top: 5px;
+                padding-bottom: 5px;
+                /* Shield name from edge */
             }
         }
     </style>
